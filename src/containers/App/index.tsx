@@ -2,11 +2,13 @@ import * as React from 'react';
 import { Route, Router, Switch } from 'react-router';
 import { Provider } from 'mobx-react';
 import styled from 'styled-components';
+import { ApolloProvider } from 'react-apollo';
 import { createBrowserHistory, History } from 'history';
 import { createStores } from '../../stores/createStore';
 import { UserModel } from '../../models/UserModel';
 import Home from '../../containers/Home';
 import Profile from '../../containers/Profile';
+import client from 'graphql/setup';
 
 const Container = styled.div`
   width: 100%;
@@ -20,16 +22,18 @@ const defautlUser = UserModel.create({
 const stores = createStores(history, defautlUser);
 
 const App = () => (
-  <Provider {...stores}>
-    <Container>
-      <Router history={history}>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/profile" component={Profile} />
-        </Switch>
-      </Router>
-    </Container>
-  </Provider>
+  <ApolloProvider client={client}>
+    <Provider {...stores}>
+      <Container>
+        <Router history={history}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/profile" component={Profile} />
+          </Switch>
+        </Router>
+      </Container>
+    </Provider>
+  </ApolloProvider>
 );
 
 export default App;

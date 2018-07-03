@@ -20,6 +20,7 @@
     "@types/react-dom": "^16.0.4",
     "@types/react-router": "^4.0.22",
     "@types/webpack": "^3.8.8",
+    "@types/webpack-env": "^1.13.6",
     "autoprefixer": "^8.6.4",
     "babel-loader": "^8.0.0-beta.4",
     "clean-webpack-plugin": "^0.1.19",
@@ -53,7 +54,6 @@
     "webpack-md5-hash": "^0.0.6"
   },
   "dependencies": {
-    "@types/webpack-env": "^1.13.6",
     "apollo-cache-inmemory": "^1.2.5",
     "apollo-client": "^2.3.5",
     "apollo-link": "^1.2.2",
@@ -72,7 +72,6 @@
     "react-hot-loader": "^4.0.0",
     "react-router": "^4.3.1",
     "reselect": "^3.0.1",
-    "styled-components": "^3.3.0",
-    "tachyons": "^4.10.0"
+    "styled-components": "^3.3.0"
   }
 }
