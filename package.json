@@ -54,17 +54,25 @@
   },
   "dependencies": {
     "@types/webpack-env": "^1.13.6",
+    "apollo-cache-inmemory": "^1.2.5",
+    "apollo-client": "^2.3.5",
+    "apollo-link": "^1.2.2",
+    "apollo-link-http": "^1.5.4",
     "classnames": "^2.2.5",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.2",
     "history": "^4.7.2",
     "mobx": "^4.3.0",
     "mobx-react": "^5.1.2",
     "mobx-react-router": "^4.0.4",
     "mobx-state-tree": "^2.0.5",
     "react": "^16.4.1",
+    "react-apollo": "^2.1.8",
     "react-dom": "^16.4.1",
     "react-hot-loader": "^4.0.0",
     "react-router": "^4.3.1",
     "reselect": "^3.0.1",
-    "styled-components": "^3.3.0"
+    "styled-components": "^3.3.0",
+    "tachyons": "^4.10.0"
   }
 }
