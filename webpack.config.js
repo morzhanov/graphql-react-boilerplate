@@ -1,15 +1,16 @@
-const webpack = require('webpack');
-const path = require('path');
-const sourcePath = path.join(__dirname, './src');
-const outPath = path.join(__dirname, './dist');
-const isProduction = process.argv.indexOf('-p') >= 0;
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackMd5Hash = require('webpack-md5-hash');
+const webpack = require('webpack')
+const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackMd5Hash = require('webpack-md5-hash')
+
+const sourcePath = path.join(__dirname, './src')
+const outPath = path.join(__dirname, './dist')
 
 module.exports = {
-  context: sourcePath,
+  devtool: 'eval',
+  context: path.join(__dirname, 'src'),
   entry: {
     main: './index'
   },
@@ -19,23 +20,15 @@ module.exports = {
     chunkFilename: '[chunkhash].js',
     publicPath: '/'
   },
-  watchOptions: {
-    poll: true
-  },
-  target: 'web',
-  devtool: 'source-map',
   resolve: {
-    extensions: ['.js', '.ts', '.tsx'],
-    mainFields: ['module', 'browser', 'main'],
-    alias: {
-      app: path.resolve(__dirname, 'src/')
-    }
+    extensions: ['.js', '.jsx']
   },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: isProduction ? 'ts-loader' : ['babel-loader', 'ts-loader']
+        test: /\.(jsx|js)?$/,
+        loaders: ['babel-loader'],
+        include: path.join(__dirname, 'src')
       },
       {
         test: /\.(css|scss|sass)$/,
@@ -94,4 +87,4 @@ module.exports = {
     fs: 'empty',
     net: 'empty'
   }
-};
+}

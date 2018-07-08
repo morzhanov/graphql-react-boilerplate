@@ -6,7 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 
 dist/
-build/
 
 .idea/
 
@@ -66,5 +65,3 @@ typings/
 .next
 
 .DS_Store
-
-.vscode/
