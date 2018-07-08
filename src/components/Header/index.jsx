@@ -1,6 +1,6 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import { observer } from 'mobx-react';
+import * as React from 'react'
+import styled from 'styled-components'
+import { observer } from 'mobx-react'
 
 const Wrapper = styled.header`
   color: #ffffff;
@@ -12,12 +12,12 @@ const Wrapper = styled.header`
   background-color: rgba(78, 94, 255, 0.7);
   text-align: center;
   line-height: 64px;
-`;
+`
 
-const Header = ({ title }: { title: string }) => (
+const Header = ({ title }) => (
   <Wrapper>
     <div>{title}</div>
   </Wrapper>
-);
+)
 
-export default observer(Header);
+export default observer(Header)
