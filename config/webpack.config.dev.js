@@ -28,17 +28,17 @@ module.exports = {
     path: outPath,
     filename: 'bundle.js',
     chunkFilename: '[chunkhash].js',
-    publicPath: paths.publicPath,
+    publicPath: paths.publicPath
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx']
   },
   module: {
     rules: [
       {
         test: /\.(jsx|js)?$/,
         loaders: ['babel-loader'],
-        include: paths.appSrc,
+        include: paths.appSrc
       },
       {
         test: /\.(css|styl)$/,
@@ -46,22 +46,27 @@ module.exports = {
           {
             loader: 'style-loader',
             options: {
-              sourceMap: true,
-            },
+              sourceMap: true
+            }
           },
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true,
-            },
+              sourceMap: true
+            }
           },
           {
             loader: 'stylus-loader',
             options: {
-              sourceMap: true,
-            },
-          },
-        ],
+              sourceMap: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader'
       },
       { test: /\.html$/, use: 'html-loader' },
       { test: /\.(jpg|svg|png)$/, use: 'file-loader' },
@@ -70,16 +75,16 @@ module.exports = {
         use: {
           loader: 'url-loader',
           options: {
-            limit: 50000,
-          },
-        },
-      },
-    ],
+            limit: 50000
+          }
+        }
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: paths.appHtml,
-      filename: 'index.html',
+      filename: 'index.html'
     }),
     new InterpolateHTMLPlugin(env.raw),
     new webpack.DefinePlugin(env.stringified),
@@ -96,19 +101,19 @@ module.exports = {
     // solution that requires the user to opt into importing specific locales.
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ],
   devServer: DevServerConfig,
   node: {
     dgram: 'empty',
     fs: 'empty',
     net: 'empty',
-    tls: 'empty',
+    tls: 'empty'
   },
   // Turn off performance hints during development because we don't do any
   // splitting or minification in interest of speed. These warnings become
   // cumbersome.
   performance: {
-    hints: false,
-  },
+    hints: false
+  }
 }

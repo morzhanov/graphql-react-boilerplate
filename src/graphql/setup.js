@@ -2,7 +2,7 @@ import { ApolloClient } from 'apollo-client'
 import { createHttpLink } from 'apollo-link-http'
 import { ApolloLink, NextLink, Operation } from 'apollo-link'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import { API_ENDPOINT } from 'utils/constants'
+import { API_ENDPOINT } from '../utils/constants'
 
 const httpLink = createHttpLink({ uri: API_ENDPOINT })
 

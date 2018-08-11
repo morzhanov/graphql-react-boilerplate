@@ -8,7 +8,7 @@ import { createStores } from '../../stores/createStore'
 import { UserModel } from '../../models/UserModel'
 import Home from '../Home'
 import Profile from '../Profile'
-import client from 'graphql/setup'
+import client from '../../graphql/setup'
 
 const Container = styled.div`
   width: 100%;
