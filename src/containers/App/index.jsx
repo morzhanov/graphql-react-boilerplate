@@ -7,7 +7,9 @@ import { createBrowserHistory, History } from 'history'
 import { createStores } from '../../stores/createStore'
 import { UserModel } from '../../models/UserModel'
 import Home from '../Home'
+import Auth from '../Auth'
 import Profile from '../Profile'
+import Guards from '../../utils/guards'
 import client from '../../graphql/setup'
 
 const Container = styled.div`
@@ -27,8 +29,24 @@ const App = () => (
       <Container>
         <Router history={history}>
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/profile" component={Profile} />
+            <Route
+              exact
+              path="/"
+              onEnter={Guards.mustBeAuthorized}
+              mustBeRedirectedTo="/auth"
+              component={Home}
+            />
+            <Route
+              onEnter={Guards.mustBeUnauthorized}
+              path="/auth"
+              component={Auth}
+            />
+            <Route
+              onEnter={Guards.mustBeAuthorized}
+              mustBeRedirectedTo="/auth"
+              path="/profile"
+              component={Profile}
+            />
           </Switch>
         </Router>
       </Container>
