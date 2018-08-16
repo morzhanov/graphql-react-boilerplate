@@ -1,6 +1,5 @@
 class Guards {
   static mustBeAuthorized(nextState, replace, callback) {
-    console.log('in guard')
     const { mustBeRedirectedTo } = nextState.routes[nextState.routes.length - 1]
     const token = localStorage.getItem('token')
 
