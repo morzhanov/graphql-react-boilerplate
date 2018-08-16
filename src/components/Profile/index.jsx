@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { inject, observer } from 'mobx-react'
-import Header from '../../components/Header'
-import Container from '../../components/Container'
-import { RootStore } from '../../stores/RootStore'
+import Header from '../common/Header'
+import Container from '../common/Container'
 
 const Profile = ({ rootStore }) => (
   <>

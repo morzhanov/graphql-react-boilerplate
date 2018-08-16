@@ -1,37 +1,49 @@
 import React from 'react'
-import { Route, IndexRedirect, Redirect } from 'react-router'
+import { Route, IndexRedirect, Redirect, Router } from 'react-router'
 import { Urls } from './routeUrls'
 import Guards from '../utils/guards'
+import Login from '../components/Auth/Login'
+import Register from '../components/Auth/Register'
 import Home from '../components/Home'
 import Posts from '../components/Posts'
 import Profile from '../components/Profile'
 import NotFound from '../components/NotFound'
 
 const ApiRouter = (history, options) => (
-  <Route path={Urls.home.route} component={App}>
-    <IndexRoute component={Home} />
+  <Router history={history}>
+    <Route
+      onEnter={Guards.mustBeUnauthorized}
+      mustBeRedirectedTo={Urls.home.route}
+      path={Urls.auth.login.route}
+      component={Login}
+    />
+    <Route
+      onEnter={Guards.mustBeUnauthorized}
+      mustBeRedirectedTo={Urls.home.route}
+      path={Urls.auth.register.route}
+      component={Register}
+    />
     <Route
       onEnter={Guards.mustBeAuthorized}
-      mustBeRedirectedTo={Urls.auth.children.login.route}
+      mustBeRedirectedTo={Urls.auth.login.route}
       path={URL.home.route}
       component={Home}
-    >
-      <Route
-        onEnter={Guards.mustBeAuthorized}
-        mustBeRedirectedTo={Urls.auth.children.login.route}
-        path={Urls.home.children.posts.route}
-        component={Posts}
-      />
-      <Route
-        onEnter={Guards.mustBeAuthorized}
-        mustBeRedirectedTo={Urls.auth.children.login.route}
-        path={Urls.home.children.profile.route}
-        component={Profile}
-      />
-    </Route>
+    />
+    <Route
+      onEnter={Guards.mustBeAuthorized}
+      mustBeRedirectedTo={Urls.auth.login.route}
+      path={Urls.posts.route}
+      component={Posts}
+    />
+    <Route
+      onEnter={Guards.mustBeAuthorized}
+      mustBeRedirectedTo={Urls.auth.login.route}
+      path={Urls.profile.route}
+      component={Profile}
+    />
     <Route path={URL.error.route} component={NotFound} />
     <Redirect from="*" to={Urls.error.link} />
-  </Route>
+  </Router>
 )
 
 export default ApiRouter

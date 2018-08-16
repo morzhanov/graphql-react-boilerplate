@@ -1,7 +1,7 @@
 const paths = require('./paths')
 const protocol = process.env.WEBPACK_HTTPS === 'true' ? 'https' : 'http'
 const host = process.env.HOST || 'localhost'
-const port = process.env.PORT || 3300
+const port = process.env.PORT || 3000
 
 module.exports = {
   // Enable gzip compression of generated files.

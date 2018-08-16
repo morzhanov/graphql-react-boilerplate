@@ -22,18 +22,12 @@ const defautlUser = UserModel.create({
 const stores = createStores(history, defautlUser)
 
 const App = () => {
-  const isAuthhorized = localStorage.getItem('token')
-
   return (
     <Provider {...stores}>
       <Container>
-        {isAuthhorized ? (
-          <ApolloProvider client={client}>
-            <ApiRouter history={history} />
-          </ApolloProvider>
-        ) : (
-          <AuthRouter history={history} />
-        )}
+        <ApolloProvider client={client}>
+          <ApiRouter history={history} />
+        </ApolloProvider>
       </Container>
     </Provider>
   )

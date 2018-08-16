@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render } from 'react-dom'
-import App from './containers/App'
+import App from './components/App'
 import { AppContainer } from 'react-hot-loader'
 import './assets/styles/main.styl'
 
@@ -12,8 +12,8 @@ render(
 )
 
 if (module.hot) {
-  module.hot.accept('./containers/App', () => {
-    const NextApp = require('./containers/App').default
+  module.hot.accept('./components/App', () => {
+    const NextApp = require('./components/App').default
     render(
       <AppContainer>
         <NextApp />
