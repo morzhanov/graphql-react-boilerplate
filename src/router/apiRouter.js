@@ -1,5 +1,6 @@
 import React from 'react'
-import { Route, IndexRedirect, Redirect, Router } from 'react-router'
+import { Router, Route, Redirect, Switch } from 'react-router'
+import GuardRoute from '../components/common/GuardRoute'
 import { Urls } from './routeUrls'
 import Guards from '../utils/guards'
 import Login from '../components/Auth/Login'
@@ -9,40 +10,43 @@ import Posts from '../components/Posts'
 import Profile from '../components/Profile'
 import NotFound from '../components/NotFound'
 
-const ApiRouter = (history, options) => (
+const ApiRouter = ({ history }) => (
   <Router history={history}>
-    <Route
-      onEnter={Guards.mustBeUnauthorized}
-      mustBeRedirectedTo={Urls.home.route}
-      path={Urls.auth.login.route}
-      component={Login}
-    />
-    <Route
-      onEnter={Guards.mustBeUnauthorized}
-      mustBeRedirectedTo={Urls.home.route}
-      path={Urls.auth.register.route}
-      component={Register}
-    />
-    <Route
-      onEnter={Guards.mustBeAuthorized}
-      mustBeRedirectedTo={Urls.auth.login.route}
-      path={URL.home.route}
-      component={Home}
-    />
-    <Route
-      onEnter={Guards.mustBeAuthorized}
-      mustBeRedirectedTo={Urls.auth.login.route}
-      path={Urls.posts.route}
-      component={Posts}
-    />
-    <Route
-      onEnter={Guards.mustBeAuthorized}
-      mustBeRedirectedTo={Urls.auth.login.route}
-      path={Urls.profile.route}
-      component={Profile}
-    />
-    <Route path={URL.error.route} component={NotFound} />
-    <Redirect from="*" to={Urls.error.link} />
+    <Switch>
+      <GuardRoute
+        exact
+        path={Urls.home}
+        component={Home}
+        guardFunction={Guards.mustBeAuthorized}
+        redirectRoute={Urls.auth.login}
+      />
+      <GuardRoute
+        path={Urls.auth.login}
+        component={Login}
+        guardFunction={Guards.mustBeUnauthorized}
+        redirectRoute={Urls.home}
+      />
+      <GuardRoute
+        path={Urls.auth.register}
+        component={Register}
+        guardFunction={Guards.mustBeUnauthorized}
+        redirectRoute={Urls.home}
+      />
+      <GuardRoute
+        path={Urls.posts}
+        component={Posts}
+        guardFunction={Guards.mustBeAuthorized}
+        redirectRoute={Urls.auth.login}
+      />
+      <GuardRoute
+        path={Urls.profile}
+        component={Profile}
+        guardFunction={Guards.mustBeAuthorized}
+        redirectRoute={Urls.auth.login}
+      />
+      <Route path={Urls.error} component={NotFound} />
+      <Redirect to={Urls.error} />
+    </Switch>
   </Router>
 )
 

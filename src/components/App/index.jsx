@@ -7,7 +7,6 @@ import { createBrowserHistory, History } from 'history'
 import { createStores } from '../../stores/createStore'
 import { UserModel } from '../../models/UserModel'
 import client from '../../graphql/setup'
-import AuthRouter from '../../router/authRouter'
 import ApiRouter from '../../router/apiRouter'
 
 const Container = styled.div`

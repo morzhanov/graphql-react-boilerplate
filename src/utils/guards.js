@@ -1,34 +1,12 @@
 class Guards {
-  static mustBeAuthorized(nextState, replace, callback) {
-    const { mustBeRedirectedTo } = nextState.routes[nextState.routes.length - 1]
+  static mustBeAuthorized() {
     const token = localStorage.getItem('token')
-
-    if (!token && mustBeRedirectedTo) {
-      replace({
-        pathname: mustBeRedirectedTo,
-        state: {
-          nextPathname: nextState.location.pathname
-        }
-      })
-    }
-
-    callback()
+    return !!token
   }
 
-  static mustBeUnauthorized(nextState, replace, callback) {
-    const { mustBeRedirectedTo } = nextState.routes[nextState.routes.length - 1]
+  static mustBeUnauthorized() {
     const token = localStorage.getItem('token')
-
-    if (token && mustBeRedirectedTo) {
-      replace({
-        pathname: mustBeRedirectedTo,
-        state: {
-          nextPathname: nextState.location.pathname
-        }
-      })
-    }
-
-    callback()
+    return !token
   }
 }
 
