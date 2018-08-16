@@ -8,11 +8,21 @@ import AUTH_QUERY from '../../graphql/queries/auth.gql'
 
 @inject('rootStore')
 @observer
-class Auth extends React.Component {
+class Login extends React.Component {
   render() {
     const { rootStore } = this.props
-    return Auth
+    return (
+      <Query query={AUTH_QUERY}>
+        {({ loading, error, data }) => (
+          <>
+            <Header title="Home" />
+            <Container content="Home page content" />
+            {rootStore.user.name || ''}
+          </>
+        )}
+      </Query>
+    )
   }
 }
 
-export default Auth
+export default Login

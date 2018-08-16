@@ -1,16 +1,32 @@
-export const routeUrls = {
+export const Urls = {
   home: {
     route: '/',
-    link: '/'
+    link: '/',
+    children: {
+      posts: {
+        route: '/posts',
+        link: '/posts'
+      },
+      profile: {
+        route: '/profile',
+        link: '/profile'
+      }
+    }
   },
-  loging: {
-    route: 'loging',
-    link: '/loging'
-  },
-  register: {
-    route: 'register',
-    link: '/register'
-  },
+  auth: {
+    route: '/auth',
+    link: '/auth',
+    children: {
+      login: {
+        route: 'login',
+        link: '/auth/login'
+      },
+      register: {
+        route: 'register',
+        link: '/auth/register'
+      },
+    }
+  }
   error: {
     route: '404',
     link: '/404'
