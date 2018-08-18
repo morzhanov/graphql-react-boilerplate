@@ -1,37 +1,27 @@
 import gql from 'graphql-tag'
+import { LoginType, RegisterType, AuthResponseType } from '../types/auth'
+import { graphqlRequestConfig } from '../../utils/heplers'
 
 export const LOGIN = gql`
-  mutation LoginUser($email: String!, $password: String!) {
-    loginUser(email: $email, password: $password) {
-      accessToken
-      refreshToken
-    }
+  mutation LoginUser($credentials: LoginType) {
+    loginUser(credentials: $credentials): AuthResponseType
   }
 `
 
 export const REGISTER = gql`
-  mutation RegisterUser($email: String!, $password: String!) {
-    registerUser(email: $email, password: $password) {
-      accessToken
-      refreshToken
-    }
+  mutation RegisterUser($credentials: RegisterType!) {
+    registerUser(credentials: $credentials): AuthResponseType
   }
 `
 
 export const LOG_OUT = gql`
-  mutation LogoutUser($accessToken: String!) {
-    logoutUser(accessToken: $accessToken) {
-      message
-      error
-    }
+  mutation LogoutUser() {
+    logoutUser(): SimpleResponse
   }
 `
 
 export const REFRESH_TOKEN = gql`
-  mutation RefreshToken($refreshTOken: String!) {
-    refreshToken(refreshTOken: $refreshTOken) {
-      accessToken
-      refreshToken
-    }
+  mutation RefreshToken() {
+    refreshToken(): SimpleResponse
   }
 `
