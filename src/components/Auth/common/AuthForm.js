@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export default styled.div`
+export default styled.form`
   width: 300px;
   * {
     width: 100%;
@@ -11,25 +11,14 @@ export default styled.div`
     font-size: 16px;
     color: #4877bf;
     font-family: Helvetica, sans-serif;
-    text-align: center;
+    display: block;
+    margin-top: 24px;
   }
   input {
-    border: 2px #5da2ff solid;
     margin-bottom: 10px;
     border-radius: 10px;
     margin-top: 12px;
-    background-color: #fff;
-    color: #000000;
-    height: 40px;
-    font-size: 16px;
-    padding: 5px 5px 5px 10px;
+    padding: 5px 5px 5px 0px;
     transition: 200ms ease all;
-    &:hover {
-      border: 2px #416dae solid;
-    }
-  }
-  .social {
-    margin-top: 0;
-    display: flex;
   }
 `

@@ -1,40 +1,12 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 import styled from 'styled-components'
-import SignInButton from './common/SignInButton'
-import AuthForm from './common/AuthForm'
 import { Urls } from '../../router/routeUrls'
-
-const AuthWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
-
-const AuthHeader = styled.div`
-  margin-top: -100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-  h1 {
-    text-align: center;
-    font-size: 36px;
-    width: 100%;
-    color: #4877bf;
-    font-family: Helvetica, sans-serif;
-    margin-bottom: 50px;
-  }
-`
-
-const ChangeTypeLink = styled.a`
-  margin-top: 20px;
-  display: block;
-`
+import { Button, Input, Link } from '@material-ui/core'
+import AuthHeader from './common/AuthHeader'
+import AuthWrapper from './common/AuthWrapper'
+import ChangeTypeLink from './common/ChangeTypeLink'
+import AuthForm from './common/AuthForm'
 
 export const AUTH_TYPE_LOGIN = 0
 export const AUTH_TYPE_REGISTER = 1
@@ -88,24 +60,32 @@ class Auth extends React.Component {
         </AuthHeader>
         <AuthForm>
           <label htmlFor="email">Email</label>
-          <input
+          <Input
             type="email"
             id="email"
             value={this.state.email}
             onChange={this.handleEmailChange}
-            placeholder="Email: "
+            placeholder="Enter email*"
           />
           <label htmlFor="password">Password</label>
-          <input
+          <Input
             type="password"
             id="password"
-            value={this.state.pwd}
+            value={this.state.password}
             onChange={this.handlePwdChange}
-            placeholder="Password: "
+            placeholder="Enter password*"
           />
-          <SignInButton onClick={this.performAuth}>
+          <Button
+            style={{
+              marginTop: 24,
+              background: '#4877bf',
+              height: 40,
+              color: '#fff'
+            }}
+            onClick={this.performAuth}
+          >
             Sign {this.state.type === AUTH_TYPE_LOGIN ? ' In' : ' Up'}
-          </SignInButton>
+          </Button>
           <ChangeTypeLink
             href={
               this.state.type === AUTH_TYPE_LOGIN

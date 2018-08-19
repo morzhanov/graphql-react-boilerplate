@@ -13,6 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^1.5.0",
     "apollo-boost": "^0.1.13",
     "apollo-client": "^2.3.8",
     "classnames": "^2.2.5",
