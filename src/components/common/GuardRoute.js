@@ -10,7 +10,7 @@ const GuardRoute = ({
   <Route
     {...rest}
     render={props =>
-      guardFunction() ? (
+      !guardFunction || guardFunction() ? (
         <Component {...props} />
       ) : (
         <Redirect to={redirectRoute} />
