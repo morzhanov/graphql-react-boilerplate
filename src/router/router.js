@@ -16,7 +16,7 @@ const ApiRouter = ({ history }) => (
         exact
         path={Urls.home}
         component={Home}
-        guardFunction={Guards.mustBeAuthorized}
+        // guardFunction={Guards.mustBeAuthorized}
         redirectRoute={Urls.auth.login}
       />
       <GuardRoute
@@ -34,13 +34,13 @@ const ApiRouter = ({ history }) => (
       <GuardRoute
         path={Urls.posts}
         component={Posts}
-        guardFunction={Guards.mustBeAuthorized}
+        // guardFunction={Guards.mustBeAuthorized}
         redirectRoute={Urls.auth.login}
       />
       <GuardRoute
         path={Urls.profile}
         component={Profile}
-        guardFunction={Guards.mustBeAuthorized}
+        // guardFunction={Guards.mustBeAuthorized}
         redirectRoute={Urls.auth.login}
       />
       <Route path={Urls.error} component={NotFound} />
