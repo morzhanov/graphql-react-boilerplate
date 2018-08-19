@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react'
 import styled from 'styled-components'
 import SignInButton from './common/SignInButton'
 import AuthForm from './common/AuthForm'
+import { Urls } from '../../router/routeUrls'
 
 const AuthWrapper = styled.div`
   width: 100%;
@@ -22,10 +23,17 @@ const AuthHeader = styled.div`
   width: 100%;
   h1 {
     text-align: center;
+    font-size: 36px;
     width: 100%;
     color: #4877bf;
     font-family: Helvetica, sans-serif;
+    margin-bottom: 50px;
   }
+`
+
+const ChangeTypeLink = styled.a`
+  margin-top: 20px;
+  display: block;
 `
 
 export const AUTH_TYPE_LOGIN = 0
@@ -37,9 +45,6 @@ export const AUTH_TYPE_REGISTER = 1
 class Auth extends React.Component {
   constructor(props) {
     super(props)
-
-    console.log(this.props)
-
     const { location } = this.props
     const type =
       location.pathname.indexOf('login') >= 0
@@ -101,6 +106,15 @@ class Auth extends React.Component {
           <SignInButton onClick={this.performAuth}>
             Sign {this.state.type === AUTH_TYPE_LOGIN ? ' In' : ' Up'}
           </SignInButton>
+          <ChangeTypeLink
+            href={
+              this.state.type === AUTH_TYPE_LOGIN
+                ? Urls.auth.register
+                : Urls.auth.login
+            }
+          >
+            Go to Sign{this.state.type === AUTH_TYPE_LOGIN ? 'Up' : ' In'}
+          </ChangeTypeLink>
         </AuthForm>
       </AuthWrapper>
     )

@@ -17,7 +17,7 @@ export default styled.div`
     border: 2px #5da2ff solid;
     margin-bottom: 10px;
     border-radius: 10px;
-    margin-top: 2px;
+    margin-top: 12px;
     background-color: #fff;
     color: #000000;
     height: 40px;
