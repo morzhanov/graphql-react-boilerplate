@@ -7,7 +7,7 @@ import { createBrowserHistory, History } from 'history'
 import { createStores } from '../../stores/createStore'
 import { UserModel } from '../../models/UserModel'
 import client from '../../graphql/setup'
-import ApiRouter from '../../router/apiRouter'
+import ApiRouter from '../../router/router'
 
 const Container = styled.div`
   width: 100%;

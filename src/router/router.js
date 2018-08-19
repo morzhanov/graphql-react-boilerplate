@@ -3,8 +3,7 @@ import { Router, Route, Redirect, Switch } from 'react-router'
 import GuardRoute from '../components/common/GuardRoute'
 import { Urls } from './routeUrls'
 import Guards from '../utils/guards'
-import Login from '../components/Auth/Login'
-import Register from '../components/Auth/Register'
+import Auth from '../components/Auth'
 import Home from '../components/Home'
 import Posts from '../components/Posts'
 import Profile from '../components/Profile'
@@ -22,13 +21,13 @@ const ApiRouter = ({ history }) => (
       />
       <GuardRoute
         path={Urls.auth.login}
-        component={Login}
+        component={Auth}
         guardFunction={Guards.mustBeUnauthorized}
         redirectRoute={Urls.home}
       />
       <GuardRoute
         path={Urls.auth.register}
-        component={Register}
+        component={Auth}
         guardFunction={Guards.mustBeUnauthorized}
         redirectRoute={Urls.home}
       />
