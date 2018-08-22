@@ -31,7 +31,7 @@ module.exports = {
     publicPath: paths.publicPath
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.mjs', '.js', '.jsx']
   },
   module: {
     rules: [

@@ -1,21 +1,30 @@
 import gql from 'graphql-tag'
-import { PostType } from '../types/post'
-import { SimpleResponse } from '../types/common'
 
 export const APP_POST = gql`
-  mutation AddPost($post: PostType) {
-    addPost(post: $post): PostType
+  mutation AddPost($content: String!) {
+    addPost(content: $content) {
+      id
+      content
+      owner
+    }
   }
 `
 
 export const UPDATE_POST = gql`
-  mutation UpdatePost($post: PostType) {
-    updatePost(post: $post): PostType
+  mutation UpdatePost($id: ID!, $content: String!) {
+    updatePost(id: $id, content: $content) {
+      id
+      content
+      owner
+    }
   }
 `
 
 export const DELETE_POST = gql`
-  mutation DeletePost($id: number) {
-    deletePost(id: $id): SimpleResponse
+  mutation DeletePost($id: ID!) {
+    deletePost(id: $id) {
+      message
+      error
+    }
   }
 `

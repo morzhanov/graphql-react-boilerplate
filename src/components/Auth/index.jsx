@@ -3,10 +3,12 @@ import { inject, observer } from 'mobx-react'
 import styled from 'styled-components'
 import { Urls } from '../../router/routeUrls'
 import { Button, Input, Link } from '@material-ui/core'
-import AuthHeader from './common/AuthHeader'
-import AuthWrapper from './common/AuthWrapper'
-import ChangeTypeLink from './common/ChangeTypeLink'
-import AuthForm from './common/AuthForm'
+import AuthHeader from './parts/AuthHeader'
+import AuthWrapper from './parts/AuthWrapper'
+import ChangeTypeLink from './parts/ChangeTypeLink'
+import AuthForm from './parts/AuthForm'
+import { Mutation } from 'react-apollo'
+import { LOGIN, REGISTER } from '../../graphql/mutations/auth'
 
 export const AUTH_TYPE_LOGIN = 0
 export const AUTH_TYPE_REGISTER = 1
@@ -55,47 +57,53 @@ class Auth extends React.Component {
     const { rootStore } = this.props
     return (
       <AuthWrapper>
-        <AuthHeader>
-          <h1>Auth</h1>
-        </AuthHeader>
-        <AuthForm>
-          <label htmlFor="email">Email</label>
-          <Input
-            type="email"
-            id="email"
-            value={this.state.email}
-            onChange={this.handleEmailChange}
-            placeholder="Enter email*"
-          />
-          <label htmlFor="password">Password</label>
-          <Input
-            type="password"
-            id="password"
-            value={this.state.password}
-            onChange={this.handlePwdChange}
-            placeholder="Enter password*"
-          />
-          <Button
-            style={{
-              marginTop: 24,
-              background: '#4877bf',
-              height: 40,
-              color: '#fff'
-            }}
-            onClick={this.performAuth}
-          >
-            Sign {this.state.type === AUTH_TYPE_LOGIN ? ' In' : ' Up'}
-          </Button>
-          <ChangeTypeLink
-            href={
-              this.state.type === AUTH_TYPE_LOGIN
-                ? Urls.auth.register
-                : Urls.auth.login
-            }
-          >
-            Go to Sign{this.state.type === AUTH_TYPE_LOGIN ? 'Up' : ' In'}
-          </ChangeTypeLink>
-        </AuthForm>
+        <Mutation mutation={LOGIN}>
+          {(addTodo, { data }) => (
+            <>
+              <AuthHeader>
+                <h1>Auth</h1>
+              </AuthHeader>
+              <AuthForm>
+                <label htmlFor="email">Email</label>
+                <Input
+                  type="email"
+                  id="email"
+                  value={this.state.email}
+                  onChange={this.handleEmailChange}
+                  placeholder="Enter email*"
+                />
+                <label htmlFor="password">Password</label>
+                <Input
+                  type="password"
+                  id="password"
+                  value={this.state.password}
+                  onChange={this.handlePwdChange}
+                  placeholder="Enter password*"
+                />
+                <Button
+                  style={{
+                    marginTop: 24,
+                    background: '#4877bf',
+                    height: 40,
+                    color: '#fff'
+                  }}
+                  onClick={this.performAuth}
+                >
+                  Sign {this.state.type === AUTH_TYPE_LOGIN ? ' In' : ' Up'}
+                </Button>
+                <ChangeTypeLink
+                  href={
+                    this.state.type === AUTH_TYPE_LOGIN
+                      ? Urls.auth.register
+                      : Urls.auth.login
+                  }
+                >
+                  Go to Sign{this.state.type === AUTH_TYPE_LOGIN ? 'Up' : ' In'}
+                </ChangeTypeLink>
+              </AuthForm>
+            </>
+          )}
+        </Mutation>
       </AuthWrapper>
     )
   }
