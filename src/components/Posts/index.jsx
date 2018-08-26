@@ -9,6 +9,7 @@ import {
   TableBody,
   TableCell
 } from '@material-ui/core'
+import Header from '../common/Header'
 
 const ProfileWrapper = styled.div`
   width: 100%;
@@ -69,6 +70,7 @@ class Posts extends React.Component {
     const email = rootStore.user.email
     return (
       <ProfileWrapper>
+        <Header />
         <Paper style={paperStyles}>
           <h1>Posts</h1>
           <Table>

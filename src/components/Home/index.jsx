@@ -1,18 +1,18 @@
 import * as React from 'react'
 import { Paper } from '@material-ui/core'
+import Header from '../common/Header'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `
 
 const mainStyles = {
   width: '80%',
   height: '80%',
+  margin: 'auto',
+  marginTop: '5%',
   textAlign: 'center',
   display: 'flex',
   alignItems: 'center',
@@ -20,9 +20,16 @@ const mainStyles = {
   fontSize: 48
 }
 
+const Heading = styled.div`
+  width: 100%;
+`
+
 const Home = props => (
   <Wrapper>
-    <Paper style={mainStyles}>Home</Paper>
+    <Header />
+    <Paper style={mainStyles}>
+      <Heading>Home</Heading>
+    </Paper>
   </Wrapper>
 )
 

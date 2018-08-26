@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled from 'styled-components'
 import { inject, observer } from 'mobx-react'
 import { Button, Paper } from '@material-ui/core'
+import Header from '../common/Header'
 
 const ProfileWrapper = styled.div`
   width: 100%;
@@ -51,6 +52,7 @@ class Profile extends React.Component {
     const email = rootStore.user.email
     return (
       <ProfileWrapper>
+        <Header />
         <Paper style={paperStyles}>
           <Id className="name">{email}</Id>
           <Email className="name">{email}</Email>
