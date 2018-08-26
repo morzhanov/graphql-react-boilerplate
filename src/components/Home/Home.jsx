@@ -22,6 +22,7 @@ const mainStyles = {
 
 const Heading = styled.div`
   width: 100%;
+  font-weight: bold;
 `
 
 const Home = props => (

@@ -12,20 +12,8 @@ import {
 import { Urls } from '../../router/routeUrls'
 import { Button } from '@material-ui/core'
 import Header from '../common/Header'
-
-const ProfileWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
-
-const Heading = styled.h1`
-  font-size: 36px;
-  margin-bottom: 24px;
-  font-weight: bold;
-`
+import { PaperWrapper } from '../common/PaperWrapper'
+import { Heading } from './parts/Heading'
 
 const paperStyles = {
   width: '80%',
@@ -85,7 +73,7 @@ class Posts extends React.Component {
     const { rootStore } = this.props
     const email = rootStore.user.email
     return (
-      <ProfileWrapper>
+      <PaperWrapper>
         <Header />
         <Paper style={paperStyles}>
           <Heading>Posts</Heading>
@@ -113,7 +101,7 @@ class Posts extends React.Component {
             Add new Post
           </Button>
         </Paper>
-      </ProfileWrapper>
+      </PaperWrapper>
     )
   }
 }
