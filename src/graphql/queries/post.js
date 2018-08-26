@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export const GET_POST = gql`
-  mutation GetPost() {
-    getPost() {
+  query GetPost($id: ID) {
+    post(id: $id) {
       id
       content
       owner
@@ -11,13 +11,11 @@ export const GET_POST = gql`
 `
 
 export const GET_POSTS = gql`
-  mutation GetPosts($id: number) {
-    getPosts(id: $id) {
-      posts {
-        id
-        content
-        owner
-      }
+  {
+    posts {
+      id
+      content
+      owner
     }
   }
 `

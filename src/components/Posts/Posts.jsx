@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 import { inject, observer } from 'mobx-react'
+import { Query } from 'react-apollo'
 import {
   Paper,
   Table,
@@ -14,6 +15,7 @@ import { Button } from '@material-ui/core'
 import Header from '../common/Header'
 import { PaperWrapper } from '../common/PaperWrapper'
 import { Heading } from './parts/Heading'
+import { GET_POSTS } from '../../graphql/queries/post'
 
 const paperStyles = {
   width: '80%',
@@ -69,6 +71,34 @@ class Posts extends React.Component {
 
   addNew = () => this.props.routerStore.push(Urls.posts.new)
 
+  renderTable = posts => (
+    <>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>id</TableCell>
+            <TableCell>Content</TableCell>
+            <TableCell>Owner</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {posts.map(post => {
+            return (
+              <TableRow key={post.id}>
+                <TableCell>{post.id}</TableCell>
+                <TableCell>{post.content}</TableCell>
+                <TableCell>{post.owner}</TableCell>
+              </TableRow>
+            )
+          })}
+        </TableBody>
+      </Table>
+      <Button style={newPostButtonStyles} onClick={this.addNew}>
+        Add new Post
+      </Button>
+    </>
+  )
+
   render() {
     const { rootStore } = this.props
     const email = rootStore.user.email
@@ -77,29 +107,13 @@ class Posts extends React.Component {
         <Header />
         <Paper style={paperStyles}>
           <Heading>Posts</Heading>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>id</TableCell>
-                <TableCell>Content</TableCell>
-                <TableCell>Owner</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {this.rows.map(row => {
-                return (
-                  <TableRow key={row.id}>
-                    <TableCell>{row.id}</TableCell>
-                    <TableCell>{row.content}</TableCell>
-                    <TableCell>{row.owner}</TableCell>
-                  </TableRow>
-                )
-              })}
-            </TableBody>
-          </Table>
-          <Button style={newPostButtonStyles} onClick={this.addNew}>
-            Add new Post
-          </Button>
+          <Query query={GET_POSTS}>
+            {({ loading, error, data }) => {
+              if (loading) return <div>Loading...</div>
+              if (error) return <div>An error occured: {error.message}</div>
+              if (data) return this.renderTable(data.posts)
+            }}
+          </Query>
         </Paper>
       </PaperWrapper>
     )
