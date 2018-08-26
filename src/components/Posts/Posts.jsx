@@ -14,7 +14,7 @@ import { Urls } from '../../router/routeUrls'
 import { Button } from '@material-ui/core'
 import Header from '../common/Header'
 import { PaperWrapper } from '../common/PaperWrapper'
-import { Heading } from './parts/Heading'
+import { Heading } from '../common/Heading'
 import { GET_POSTS } from '../../graphql/queries/post'
 
 const paperStyles = {

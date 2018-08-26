@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export const GET_USER = gql`
-  mutation GetUser() {
-    getUser() {
+  {
+    user {
       id
       email
     }
