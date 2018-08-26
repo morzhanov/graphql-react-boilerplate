@@ -64,7 +64,7 @@ class Header extends React.Component {
                         <Link to={Urls.home}>Home</Link>
                       </MenuItem>
                       <MenuItem onClick={this.handleClose}>
-                        <Link to={Urls.posts}>Posts</Link>
+                        <Link to={Urls.posts.all}>Posts</Link>
                       </MenuItem>
                       <MenuItem onClick={this.handleClose}>
                         <Link to={Urls.profile}>Profile</Link>

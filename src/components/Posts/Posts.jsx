@@ -9,6 +9,8 @@ import {
   TableBody,
   TableCell
 } from '@material-ui/core'
+import { Urls } from '../../router/routeUrls'
+import { Button } from '@material-ui/core'
 import Header from '../common/Header'
 
 const ProfileWrapper = styled.div`
@@ -19,16 +21,30 @@ const ProfileWrapper = styled.div`
   justify-content: center;
 `
 
+const Heading = styled.h1`
+  font-size: 36px;
+  margin-bottom: 24px;
+  font-weight: bold;
+`
+
 const paperStyles = {
   width: '80%',
   height: '80%',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  flexDirection: 'column'
+  flexDirection: 'column',
+  padding: 24
+}
+
+const newPostButtonStyles = {
+  marginTop: 40,
+  width: 200,
+  fontWeight: 'bold'
 }
 
 @inject('rootStore')
+@inject('routerStore')
 @observer
 class Posts extends React.Component {
   constructor(props) {
@@ -63,7 +79,7 @@ class Posts extends React.Component {
     ]
   }
 
-  logOut = () => {}
+  addNew = () => this.props.routerStore.push(Urls.posts.new)
 
   render() {
     const { rootStore } = this.props
@@ -72,7 +88,7 @@ class Posts extends React.Component {
       <ProfileWrapper>
         <Header />
         <Paper style={paperStyles}>
-          <h1>Posts</h1>
+          <Heading>Posts</Heading>
           <Table>
             <TableHead>
               <TableRow>
@@ -93,6 +109,9 @@ class Posts extends React.Component {
               })}
             </TableBody>
           </Table>
+          <Button style={newPostButtonStyles} onClick={this.addNew}>
+            Add new Post
+          </Button>
         </Paper>
       </ProfileWrapper>
     )

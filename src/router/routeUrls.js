@@ -4,7 +4,10 @@ export const Urls = {
     register: '/auth/register'
   },
   home: '/',
-  posts: '/posts',
+  posts: {
+    all: '/posts',
+    new: '/posts/new'
+  },
   profile: '/profile',
   error: '/404'
 }
