@@ -1,11 +1,12 @@
 class Guards {
   static mustBeAuthorized() {
-    const token = localStorage.getItem('token')
-    return !!token
+    const token = localStorage.getItem('accessToken')
+    const refreshToken = localStorage.getItem('refreshToken')
+    return !!token & !!refreshToken
   }
 
   static mustBeUnauthorized() {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('accessToken')
     return !token
   }
 }

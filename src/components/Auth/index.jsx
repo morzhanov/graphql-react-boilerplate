@@ -9,6 +9,7 @@ import ChangeTypeLink from './parts/ChangeTypeLink'
 import AuthForm from './parts/AuthForm'
 import { Mutation } from 'react-apollo'
 import { LOGIN, REGISTER } from '../../graphql/mutations/auth'
+import { Validator } from '../../utils/heplers'
 
 export const AUTH_TYPE_LOGIN = 0
 export const AUTH_TYPE_REGISTER = 1
@@ -31,18 +32,15 @@ class Auth extends React.Component {
     }
   }
 
-  performAuth = () => {
-    if (!EmailValidator.validate(this.state.email)) {
-      return MessageManager.addMessage('Please provide valid email address.')
-    }
+  onAuthorized = ({ login }) => {
+    console.log('data  = ', login)
+    localStorage.setItem('accessToken', login.accessToken)
+    localStorage.setItem('refreshToken', login.refreshToken)
+    this.props.routerStore.push(Urls.home)
+  }
 
-    if (this.state.pwd.length < 5) {
-      return MessageManager.addMessage(
-        'Password must be at least 5 characters long.'
-      )
-    }
-
-    this.props.dispatch(loginRequest(this.state.email, this.state.pwd))
+  onAuthorizationError = error => {
+    window.alert(error)
   }
 
   handleEmailChange = e => {
@@ -57,8 +55,12 @@ class Auth extends React.Component {
     const { rootStore } = this.props
     return (
       <AuthWrapper>
-        <Mutation mutation={LOGIN}>
-          {(addTodo, { data }) => (
+        <Mutation
+          mutation={this.state.type === AUTH_TYPE_LOGIN ? LOGIN : REGISTER}
+          onCompleted={this.onAuthorized}
+          onError={this.onAuthorizationError}
+        >
+          {(auth, { data }) => (
             <>
               <AuthHeader>
                 <h1>Auth</h1>
@@ -87,7 +89,14 @@ class Auth extends React.Component {
                     height: 40,
                     color: '#fff'
                   }}
-                  onClick={this.performAuth}
+                  onClick={() =>
+                    auth({
+                      variables: {
+                        email: this.state.email,
+                        password: this.state.password
+                      }
+                    })
+                  }
                 >
                   Sign {this.state.type === AUTH_TYPE_LOGIN ? ' In' : ' Up'}
                 </Button>
