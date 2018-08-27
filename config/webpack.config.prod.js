@@ -129,7 +129,7 @@ module.exports = {
       },
       { test: /\.html$/, use: 'html-loader' },
       {
-        test: /\.(jpg|svg|png)$/,
+        test: /\.(ico|jpg|svg|png)$/,
         use: {
           loader: 'file-loader',
           options: {

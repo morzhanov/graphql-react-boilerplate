@@ -74,7 +74,7 @@ module.exports = {
         loader: 'graphql-tag/loader'
       },
       { test: /\.html$/, use: 'html-loader' },
-      { test: /\.(jpg|svg|png)$/, use: 'file-loader' },
+      { test: /\.(ico|jpg|svg|png)$/, use: 'file-loader' },
       {
         test: /\.(|eot|ttf|woff)$/,
         use: {
