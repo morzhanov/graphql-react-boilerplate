@@ -10,6 +10,7 @@ import { PaperWrapper } from '../common/PaperWrapper'
 import { Heading } from '../common/Heading'
 import { GET_POSTS } from '../../graphql/queries/post'
 import { PostsTable } from './parts/PostsTable'
+import ApolloClient from '../../graphql/setup'
 
 const paperStyles = {
   width: '80%',
@@ -31,6 +32,18 @@ const newPostButtonStyles = {
 @inject('routerStore')
 @observer
 class Posts extends React.Component {
+  state = { posts: [] }
+
+  componentDidMount() {
+    // other way to create graphql query
+    ApolloClient.query({
+      query: GET_POSTS
+    }).then(({ data: { posts } }) => {
+      this.setState({ posts: posts })
+      this.forceUpdate()
+    })
+  }
+
   addNew = () => this.props.routerStore.push(Urls.posts.new)
 
   render() {
@@ -41,21 +54,10 @@ class Posts extends React.Component {
         <Header />
         <Paper style={paperStyles}>
           <Heading>Posts</Heading>
-          <Query query={GET_POSTS}>
-            {({ loading, error, data }) => {
-              if (loading) return <div>Loading...</div>
-              if (error) return <div>An error occured: {error.message}</div>
-              if (data)
-                return (
-                  <>
-                    <PostsTable posts={data.posts} />
-                    <Button style={newPostButtonStyles} onClick={this.addNew}>
-                      Add new Post
-                    </Button>
-                  </>
-                )
-            }}
-          </Query>
+          {this.state.posts && <PostsTable posts={this.state.posts} />}
+          <Button style={newPostButtonStyles} onClick={this.addNew}>
+            Add new Post
+          </Button>
         </Paper>
       </PaperWrapper>
     )

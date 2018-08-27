@@ -14,6 +14,18 @@ const httpLink = createHttpLink({
   uri: 'http://localhost:4000/api'
 })
 
+// we disabling local cache to rely on network requests only
+const defaultOptions = {
+  watchQuery: {
+    fetchPolicy: 'network-only',
+    errorPolicy: 'ignore'
+  },
+  query: {
+    fetchPolicy: 'network-only',
+    errorPolicy: 'all'
+  }
+}
+
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = localStorage.getItem('accessToken')
@@ -28,7 +40,8 @@ const authLink = setContext((_, { headers }) => {
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
+  defaultOptions: defaultOptions
 })
 
 export default client
