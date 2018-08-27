@@ -33,7 +33,6 @@ class Auth extends React.Component {
   }
 
   onAuthorized = ({ login }) => {
-    console.log('data  = ', login)
     localStorage.setItem('accessToken', login.accessToken)
     localStorage.setItem('refreshToken', login.refreshToken)
     this.props.routerStore.push(Urls.home)
@@ -48,7 +47,7 @@ class Auth extends React.Component {
   }
 
   handlePwdChange = e => {
-    this.setState({ pwd: e.target.value })
+    this.setState({ password: e.target.value })
   }
 
   render() {
