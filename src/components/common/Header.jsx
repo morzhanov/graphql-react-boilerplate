@@ -21,9 +21,7 @@ const toggleButtonStyles = {
 
 @inject('routerStore')
 class Header extends React.Component {
-  state = {
-    open: false
-  }
+  state = { open: false }
 
   handleToggle = () => {
     this.setState(state => ({ open: !state.open }))
@@ -35,9 +33,7 @@ class Header extends React.Component {
     this.props.routerStore.push(Urls.auth.login)
   }
 
-  handleClose = event => {
-    this.setState({ open: false })
-  }
+  handleClose = event => this.setState({ open: false })
 
   render() {
     const { open } = this.state

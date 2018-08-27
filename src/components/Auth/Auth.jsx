@@ -11,10 +11,9 @@ import { Mutation } from 'react-apollo'
 import { LOGIN, REGISTER } from '../../graphql/mutations/auth'
 import { Validator, saveTokens } from '../../utils/heplers'
 
-export const AUTH_TYPE_LOGIN = 0
-export const AUTH_TYPE_REGISTER = 1
+const AUTH_TYPE_LOGIN = 0
+const AUTH_TYPE_REGISTER = 1
 
-@inject('rootStore')
 @inject('routerStore')
 @observer
 class Auth extends React.Component {
@@ -37,20 +36,13 @@ class Auth extends React.Component {
     this.props.routerStore.push(Urls.home)
   }
 
-  onAuthorizationError = error => {
-    window.alert(error)
-  }
+  onAuthorizationError = error => window.alert(error)
 
-  handleEmailChange = e => {
-    this.setState({ email: e.target.value })
-  }
+  handleEmailChange = e => this.setState({ email: e.target.value })
 
-  handlePwdChange = e => {
-    this.setState({ password: e.target.value })
-  }
+  handlePwdChange = e => this.setState({ password: e.target.value })
 
   render() {
-    const { rootStore } = this.props
     return (
       <AuthWrapper>
         <Mutation

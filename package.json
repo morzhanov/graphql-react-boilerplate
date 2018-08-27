@@ -21,6 +21,7 @@
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "history": "^4.7.2",
+    "lodash": "^4.17.10",
     "mobx": "^4.3.0",
     "mobx-react": "^5.1.2",
     "mobx-react-router": "^4.0.4",

@@ -1,12 +1,10 @@
 import * as React from 'react'
 import styled from 'styled-components'
-import { Route, Router, Switch } from 'react-router'
 import { Provider } from 'mobx-react'
 import { ApolloProvider } from 'react-apollo'
 import { createBrowserHistory, History } from 'history'
 import { createStores } from '../../stores/createStore'
-import { UserModel } from '../../models/UserModel'
-import client from '../../graphql/setup'
+import ApolloClient from '../../graphql/setup'
 import ApiRouter from '../../router/router'
 
 const Container = styled.div`
@@ -15,16 +13,13 @@ const Container = styled.div`
 `
 
 const history = createBrowserHistory()
-const defautlUser = UserModel.create({
-  name: 'Default Name'
-})
-const stores = createStores(history, defautlUser)
+const stores = createStores(history)
 
 const App = () => {
   return (
     <Provider {...stores}>
       <Container>
-        <ApolloProvider client={client}>
+        <ApolloProvider client={ApolloClient}>
           <ApiRouter history={history} />
         </ApolloProvider>
       </Container>

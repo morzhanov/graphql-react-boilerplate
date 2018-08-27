@@ -10,6 +10,7 @@ import { Mutation } from 'react-apollo'
 import { UPDATE_USER } from '../../graphql/mutations/user'
 import { Heading } from '../common/Heading'
 import { InputField } from './parts/InputField'
+import ApolloClient from '../../graphql/setup'
 
 const paperStyles = {
   width: '80%',
@@ -29,11 +30,22 @@ const buttonStyles = {
 @inject('rootStore')
 @observer
 class Profile extends React.Component {
-  state = { edit: false, email: '' }
+  state = { edit: false }
+
+  componentDidMount() {
+    ApolloClient.query({
+      query: GET_USER
+    }).then(({ data: { user } }) => {
+      this.props.rootStore.updateUser(user)
+      this.forceUpdate()
+    })
+  }
 
   toggleEdit = () => this.setState({ edit: !this.state.edit })
 
-  handleEmailChange = email => this.setState({ email: email })
+  handleEmailChange = e => {
+    this.props.rootStore.updateUser({ email: e.target.value })
+  }
 
   onUpdated = ({ updateUser }) => {
     localStorage.setItem('accessToken', updateUser.accessToken)
@@ -45,8 +57,7 @@ class Profile extends React.Component {
   onError = error => window.alert(error)
 
   render() {
-    const { rootStore } = this.props
-    const email = rootStore.user.email
+    const { email, id } = this.props.rootStore.user
     return (
       <Mutation
         mutation={UPDATE_USER}
@@ -58,34 +69,20 @@ class Profile extends React.Component {
             <Header />
             <Paper style={paperStyles}>
               <Heading>User data</Heading>
-              <Query query={GET_USER}>
-                {({ loading, error, data }) => {
-                  if (loading) return <div>Loading...</div>
-                  if (error) return <div>An error occured: {error.message}</div>
-                  if (data)
-                    return (
-                      <div>
-                        <InputField
-                          editable={false}
-                          value={data.user.id}
-                          name="id"
-                        />
-                        <InputField
-                          onChange={this.handleEmailChange}
-                          editable={this.state.edit}
-                          value={data.user.email}
-                          name="email"
-                        />
-                      </div>
-                    )
-                }}
-              </Query>
+              <div>
+                <InputField editable={false} value={id} name="id" />
+                <InputField
+                  onChange={this.handleEmailChange}
+                  editable={this.state.edit}
+                  value={email}
+                  name="email"
+                />
+              </div>
               <Button
                 style={buttonStyles}
                 onClick={
                   this.state.edit
-                    ? () =>
-                        updateUser({ variables: { email: this.state.email } })
+                    ? () => updateUser({ variables: { email: email } })
                     : this.toggleEdit
                 }
               >

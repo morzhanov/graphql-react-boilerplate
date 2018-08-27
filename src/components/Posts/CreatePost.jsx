@@ -27,7 +27,6 @@ const newPostButtonStyles = {
   width: 200
 }
 
-@inject('rootStore')
 @inject('routerStore')
 @observer
 class CreatePost extends React.Component {
@@ -43,8 +42,6 @@ class CreatePost extends React.Component {
   onError = e => window.alert(e)
 
   render() {
-    const { rootStore } = this.props
-    const email = rootStore.user.email
     return (
       <Mutation
         mutation={ADD_POST}

@@ -25,15 +25,13 @@ export const PostsTable = ({ posts }) => (
         </TableRow>
       </TableHead>
       <TableBody>
-        {posts.map(post => {
-          return (
-            <TableRow key={post.id}>
-              <TableCell>{post.id}</TableCell>
-              <TableCell>{post.content}</TableCell>
-              <TableCell>{post.owner}</TableCell>
-            </TableRow>
-          )
-        })}
+        {posts.map(post => (
+          <TableRow key={post.id}>
+            <TableCell>{post.id}</TableCell>
+            <TableCell>{post.content}</TableCell>
+            <TableCell>{post.owner}</TableCell>
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   </TableWrapper>

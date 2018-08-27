@@ -22,27 +22,9 @@ const Input = styled.input`
   width: 300px;
 `
 
-export class InputField extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      value: this.props.value
-    }
-  }
-
-  onChange = e => {
-    this.setState({ value: e.target.value })
-    this.props.onChange && this.props.onChange(e.target.value)
-  }
-
-  render() {
-    const { value } = this.state
-    const { name, editable } = this.props
-    return (
-      <InputWrapper className="name">
-        <b>{name}:</b>
-        <Input disabled={!editable} onChange={this.onChange} value={value} />
-      </InputWrapper>
-    )
-  }
-}
+export const InputField = ({ value, name, editable, onChange }) => (
+  <InputWrapper className="name">
+    <b>{name}:</b>
+    <Input disabled={!editable} onChange={onChange} value={value} />
+  </InputWrapper>
+)

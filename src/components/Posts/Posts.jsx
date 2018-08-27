@@ -28,18 +28,16 @@ const newPostButtonStyles = {
   fontWeight: 'bold'
 }
 
-@inject('rootStore')
-@inject('routerStore')
+@inject('routerStore', 'rootStore')
 @observer
 class Posts extends React.Component {
-  state = { posts: [] }
-
   componentDidMount() {
-    // other way to create graphql query
+    const { rootStore } = this.props
+
     ApolloClient.query({
       query: GET_POSTS
     }).then(({ data: { posts } }) => {
-      this.setState({ posts: posts })
+      rootStore.setPosts(posts)
       this.forceUpdate()
     })
   }
@@ -47,14 +45,13 @@ class Posts extends React.Component {
   addNew = () => this.props.routerStore.push(Urls.posts.new)
 
   render() {
-    const { rootStore } = this.props
-    const email = rootStore.user.email
+    const { posts } = this.props.rootStore
     return (
       <PaperWrapper>
         <Header />
         <Paper style={paperStyles}>
           <Heading>Posts</Heading>
-          {this.state.posts && <PostsTable posts={this.state.posts} />}
+          {posts && <PostsTable posts={posts} />}
           <Button style={newPostButtonStyles} onClick={this.addNew}>
             Add new Post
           </Button>
