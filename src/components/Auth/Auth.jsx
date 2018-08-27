@@ -9,7 +9,7 @@ import ChangeTypeLink from './parts/ChangeTypeLink'
 import AuthForm from './parts/AuthForm'
 import { Mutation } from 'react-apollo'
 import { LOGIN, REGISTER } from '../../graphql/mutations/auth'
-import { Validator } from '../../utils/heplers'
+import { Validator, saveTokens } from '../../utils/heplers'
 
 export const AUTH_TYPE_LOGIN = 0
 export const AUTH_TYPE_REGISTER = 1
@@ -33,8 +33,7 @@ class Auth extends React.Component {
   }
 
   onAuthorized = ({ login }) => {
-    localStorage.setItem('accessToken', login.accessToken)
-    localStorage.setItem('refreshToken', login.refreshToken)
+    saveTokens(login)
     this.props.routerStore.push(Urls.home)
   }
 

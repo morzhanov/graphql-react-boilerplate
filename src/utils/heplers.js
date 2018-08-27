@@ -14,3 +14,13 @@ export const graphqlRequestConfig = context => ({
 export const gqlWithContext = (gql, context) => {
   return graphql(gql, graphqlRequestConfig(context))
 }
+
+export const saveTokens = ({ accessToken, refreshToken }) => {
+  localStorage.setItem('accessToken', accessToken)
+  localStorage.setItem('refreshToken', refreshToken)
+}
+
+export const logout = () => {
+  localStorage.removeItem('accessToken')
+  localStorage.removeItem('refreshToken')
+}

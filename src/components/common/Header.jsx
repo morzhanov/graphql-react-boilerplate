@@ -10,6 +10,8 @@ import MenuList from '@material-ui/core/MenuList'
 import { withStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 import { Urls } from '../../router/routeUrls'
+import { logout } from '../../utils/heplers'
+import { inject } from 'mobx-react'
 
 const toggleButtonStyles = {
   position: 'absolute',
@@ -17,6 +19,7 @@ const toggleButtonStyles = {
   right: '10px'
 }
 
+@inject('routerStore')
 class Header extends React.Component {
   state = {
     open: false
@@ -26,11 +29,13 @@ class Header extends React.Component {
     this.setState(state => ({ open: !state.open }))
   }
 
-  handleClose = event => {
-    if (this.anchorEl.contains(event.target)) {
-      return
-    }
+  handleLogout = () => {
+    this.handleClose()
+    logout()
+    this.props.routerStore.push(Urls.auth.login)
+  }
 
+  handleClose = event => {
     this.setState({ open: false })
   }
 
@@ -69,7 +74,7 @@ class Header extends React.Component {
                       <MenuItem onClick={this.handleClose}>
                         <Link to={Urls.profile}>Profile</Link>
                       </MenuItem>
-                      <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+                      <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>
