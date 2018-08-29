@@ -10,7 +10,7 @@ import { PaperWrapper } from '../common/PaperWrapper'
 import { Heading } from '../common/Heading'
 import { GET_POSTS } from '../../graphql/queries/post'
 import { PostsTable } from './parts/PostsTable'
-import ApolloClient from '../../graphql/setup'
+import ApolloClient from '../../graphql/client'
 
 const paperStyles = {
   width: '80%',

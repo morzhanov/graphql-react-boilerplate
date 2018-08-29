@@ -4,7 +4,7 @@ import { Provider } from 'mobx-react'
 import { ApolloProvider } from 'react-apollo'
 import { createBrowserHistory, History } from 'history'
 import { createStores } from '../../stores/createStore'
-import ApolloClient from '../../graphql/setup'
+import ApolloClient from '../../graphql/client'
 import ApiRouter from '../../router/router'
 
 const Container = styled.div`

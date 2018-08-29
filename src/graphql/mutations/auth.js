@@ -28,10 +28,10 @@ export const LOG_OUT = gql`
 `
 
 export const REFRESH_TOKEN = gql`
-  mutation RefreshToken($id: ID!) {
-    refreshToken(id: $id) {
-      message
-      error
+  mutation RefreshToken($refreshToken: String!) {
+    refreshToken(refreshToken: $refreshToken) {
+      accessToken
+      refreshToken
     }
   }
 `

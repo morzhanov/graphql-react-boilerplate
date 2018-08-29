@@ -10,7 +10,7 @@ import { Mutation } from 'react-apollo'
 import { UPDATE_USER } from '../../graphql/mutations/user'
 import { Heading } from '../common/Heading'
 import { InputField } from './parts/InputField'
-import ApolloClient from '../../graphql/setup'
+import ApolloClient from '../../graphql/client'
 
 const paperStyles = {
   width: '80%',
