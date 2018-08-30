@@ -5,9 +5,7 @@ Based on <a href="https://github.com/VladMorzhanov/mst-react-boilerplate">Mobx-S
 
 Also this boilerplate contains babel configuration to use decorators from ES7 and HMR with React.
 
-This project based on <a href="link-to-mst-boilerplate">mst-react-boilerplate</a>
-
-This is a frontend part of GraphQL boilerplate projects. You can also review <a href="link-to-react">graphql-react-boilerplate</a> to see how things works on the backend side with NodeJS and Express.
+This is a frontend part of GraphQL boilerplate projects. You can also review <a href="https://github.com/VladMorzhanov/graphql-nodejs-boilerplate">graphql-react-boilerplate</a> to see how things works on the backend side with NodeJS and Express.
 
 ## Installation
 
