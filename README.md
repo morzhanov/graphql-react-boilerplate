@@ -1,7 +1,5 @@
 # GraphQL React Boilerplate
 
-<h1> UNDER DEVELOPMENT</h1>
-
 GraphQL + React Boilerplate allows you to start new web project from scratch using React, Apollo, Typescript, Mobx-State-Tree, Mobx and Styled components.
 Based on <a href="https://github.com/VladMorzhanov/mst-react-boilerplate">Mobx-State-Tree React Boilerplate</a>
 
