@@ -7,6 +7,10 @@ Based on <a href="https://github.com/VladMorzhanov/mst-react-boilerplate">Mobx-S
 
 Also this boilerplate contains babel configuration to use decorators from ES7 and HMR with React.
 
+This project based on <a href="link-to-mst-boilerplate">mst-react-boilerplate</a>
+
+This is a frontend part of GraphQL boilerplate projects. You can also review <a href="link-to-react">graphql-react-boilerplate</a> to see how things works on the backend side with NodeJS and Express.
+
 ## Installation
 
 Use these steps to install project
@@ -18,6 +22,20 @@ Use these steps to install project
 
 Build project:
 
+development
+
+```
+yarn build
+```
+
+staging
+
+```
+yarn build
+```
+
+production
+
 ```
 yarn build
 ```
@@ -26,6 +44,8 @@ yarn build
 
 - Uses webpack to build project.
 - Uses Babel to compile ES6 and ES7 code.
+- Uses Apollo client to work with GraphQL
+- Uses Mobx and Mobx-State-Tree for state management
 - You can use SASS\SCSS within this boilerplate.
 - Check your code with ESLint and Prettier.
 - Supports styled components.
