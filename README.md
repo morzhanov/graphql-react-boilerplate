@@ -16,7 +16,7 @@ Use these steps to install project
 2. yarn start
 ```
 
-Build project:
+## Build project:
 
 development
 
