@@ -27,13 +27,13 @@ yarn build
 staging
 
 ```
-yarn build
+yarn staging
 ```
 
 production
 
 ```
-yarn build
+yarn production
 ```
 
 ## Usage
