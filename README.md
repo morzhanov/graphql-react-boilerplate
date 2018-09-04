@@ -10,8 +10,7 @@ Also this boilerplate contains babel configuration to use decorators from ES7 an
 This is a frontend part of GraphQL boilerplate projects. You can also review <a href="https://github.com/VladMorzhanov/graphql-nodejs-boilerplate">graphql-nodejs-boilerplate</a> to see how things works on the backend side with NodeJS and Express.
 
 ## Mobx
-<img src="https://i.imgur.com/8sCeaLh.png"/>
-<img src="https://i.imgur.com/tnoLukK.png"/>
+<img src="https://i.imgur.com/8sCeaLh.png"/> <img src="https://i.imgur.com/tnoLukK.png"/>
 
 Note: this boilerplate uses Mobx and Mobx-state-tree libraries as state manager.
 
