@@ -17,9 +17,10 @@ Note: this boilerplate uses Mobx and Mobx-state-tree libraries as state manager.
 
 ### note: prerendering
 
-If you want to enable prerendering for this project please take a look on <a href="https://github.com/VladMorzhanov/prerender-spa-boilerplate">prerender-spa-plugin</a> based on <a href="https://github.com/chrisvfritz/prerender-spa-plugin">prerender-spa-plugin</a>
+If you want to enable prerendering for this project please take a look on <a href="https://github.com/VladMorzhanov/prerender-spa-boilerplate">prerender-spa-boilerplate</a> based on <a href="https://github.com/chrisvfritz/prerender-spa-plugin">prerender-spa-plugin</a>
 
-
+&nbsp;
+&nbsp;
 
 ## Installation
 
