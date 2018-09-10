@@ -11,6 +11,10 @@ This project based on <a href="link-to-mst-boilerplate">mst-react-boilerplate</a
 
 This is a frontend part of GraphQL boilerplate projects. You can also review <a href="link-to-react">graphql-react-boilerplate</a> to see how things works on the backend side with NodeJS and Express.
 
+### note: prerendering
+
+If you want to enable prerendering to the project please take a look on <a href="https://github.com/VladMorzhanov/prerender-spa-boilerplate">prerender-spa-plugin</a> based on <a href="https://github.com/chrisvfritz/prerender-spa-plugin">prerender-spa-plugin</a>
+
 ## Installation
 
 Use these steps to install project
