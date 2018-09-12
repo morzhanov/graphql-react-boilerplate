@@ -3,7 +3,6 @@
 <img src="https://i.imgur.com/tBMoE7v.png"/>
 
 GraphQL + React Boilerplate allows you to start new web project from scratch using React, Apollo, Mobx-State-Tree, Mobx and Styled components.
-Based on <a href="https://github.com/VladMorzhanov/mst-react-boilerplate">Mobx-State-Tree React Boilerplate</a>
 
 Also this boilerplate contains babel configuration to use decorators from ES7 and HMR with React.
 
@@ -13,11 +12,16 @@ This is a frontend part of GraphQL boilerplate projects. You can also review <a 
 
 <img src="https://i.imgur.com/8sCeaLh.png"/> <img src="https://i.imgur.com/KhPlLuR.png"/>
 
-Note: this boilerplate uses Mobx and Mobx-state-tree libraries as state manager.
+Note: this boilerplate based on <a href="https://github.com/VladMorzhanov/mst-react-boilerplate">Mobx-State-Tree React Boilerplate</a> and uses Mobx and Mobx-state-tree libraries as state manager.
 
-### note: prerendering
+&nbsp;
 
-If you want to enable prerendering to the project please take a look on <a href="https://github.com/VladMorzhanov/prerender-spa-boilerplate">prerender-spa-plugin</a> based on <a href="https://github.com/chrisvfritz/prerender-spa-plugin">prerender-spa-plugin</a>
+### Note: prerendering
+
+If you want to enable prerendering for this project please take a look on <a href="https://github.com/VladMorzhanov/prerender-spa-boilerplate">prerender-spa-boilerplate</a> based on <a href="https://github.com/chrisvfritz/prerender-spa-plugin">prerender-spa-plugin</a>
+
+&nbsp;
+&nbsp;
 
 ## Installation
 
