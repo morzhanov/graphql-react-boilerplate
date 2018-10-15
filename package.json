@@ -1,9 +1,10 @@
 {
   "name": "graphql-react-boilerplate",
-  "version": "1.2.0",
-  "private": true,
+  "version": "1.2.2",
   "description": "GraphQL client application boilerplate written with React, Mobx and styled-components.",
-  "main": "index.js",
+  "license": "MIT",
+  "author": "Vlad Morzhanov",
+  "main": "./src/index.js",
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server  --config config/webpack.config.dev.js --mode development",
     "bld": "sh -ac '. ./.env.${REACT_APP_BUILD_MODE}; node ./config/scripts/build.js'",
@@ -11,7 +12,6 @@
     "staging": "REACT_APP_BUILD_MODE=staging yarn run bld",
     "production": "REACT_APP_BUILD_MODE=production yarn run bld"
   },
-  "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^1.5.0",
     "apollo-boost": "^0.1.13",
